@@ -1,5 +1,5 @@
 from itertools import combinations
-def solution(relation): # 15: 48 ~
+def solution(relation): # 15: 48 ~ 17:00
     """
         [문제 이해]
         후보 키: 유일성과 최소성을 만족 한다.
@@ -38,7 +38,8 @@ def solution(relation): # 15: 48 ~
     row = len(relation)
     col = len(relation[0])
     
-    num_list = [i for i in range(1, col+1)]
+    #num_list = [i for i in range(1, col+1)]
+    num_list = range(col)
     # print(f"num_list = {num_list}")
     
     candidate_keys = set()
@@ -56,16 +57,14 @@ def solution(relation): # 15: 48 ~
                 continue
                     
             for r in relation:
-                col_comb = tuple(r[c-1] for c in comb)
+                col_comb = tuple(r[c] for c in comb)
                 row_set.add(col_comb)
             
             
             if len(row_set) == row:
                 candidate_keys.add(comb)
             
-            
             print(candidate_keys)
     
-        
     return len(candidate_keys)
    
